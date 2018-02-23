@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Creating an XML Tree using LINQ to XML-->
+<root>
+
+
+<reqFields>
+	<field name="co"></field>
+	<field name="entryDate"></field>
+	<field name="process"></field>
+	<field name="gl1">
+		<EEtaxDebit>gl1+symbol</EEtaxDebit>
+		<taxCredit>cash1+symbol</taxCredit>
+		<agencyDebit></agencyDebit>
+		<manualDebit>cash1</manualDebit>
+		<manualCredit>cash1+symbol</manualCredit>
+		<transferType>gl1</transferType>
+	</field>
+	<field name="gl2">
+		<EEtaxDebit>gl2+symbol</EEtaxDebit>
+		<taxCredit>cash2+symbol</taxCredit>
+		<agencyDebit></agencyDebit>
+		<manualDebit>cash2</manualDebit>
+		<manualCredit>cash2+symbol</manualCredit>
+		<transferType>glx</transferType>
+	</field>
+	<field name="gl3">
+		<EEtaxDebit>gl3+symbol</EEtaxDebit>
+		<taxCredit>cash3+symbol</taxCredit>
+		<agencyDebit></agencyDebit>
+		<manualDebit>cash3</manualDebit>
+		<manualCredit>cash3+symbol</manualCredit>
+		<transferType>glx</transferType>
+	</field>
+	<field name="gl4">
+		<EEtaxDebit>gl4+symbol</EEtaxDebit>
+		<taxCredit>cash4+symbol</taxCredit>
+		<agencyDebit></agencyDebit>
+		<manualDebit>cash4</manualDebit>
+		<manualCredit>cash4+symbol</manualCredit>
+		<transferType>glx</transferType>
+	</field>
+	<field name="gl5">
+		<EEtaxDebit>gl5+symbol</EEtaxDebit>
+		<taxCredit>cash5+symbol</taxCredit>
+		<agencyDebit></agencyDebit>
+		<manualDebit>cash5</manualDebit>
+		<manualCredit>cash5+symbol</manualCredit>
+		<transferType>glx</transferType>
+	</field>
+	<field name="gl6">
+		<EEtaxDebit>gl6+symbol</EEtaxDebit>
+		<taxCredit>cash6+symbol</taxCredit>
+		<agencyDebit></agencyDebit>
+		<manualDebit>cash6</manualDebit>
+		<manualCredit>cash6+symbol</manualCredit>
+		<transferType>glx</transferType>
+	</field>
+	<field name="cd">
+		<EEtaxDebit>D</EEtaxDebit>
+		<taxCredit>C</taxCredit>
+		<agencyDebit></agencyDebit>
+		<manualDebit>D</manualDebit>
+		<manualCredit>C</manualCredit>
+	</field>
+	<field name="det"></field>
+	<field name="detCode">
+		<EEtaxDebit>Tax Transfers</EEtaxDebit>
+		<taxCredit>Tax Transfers</taxCredit>
+		<agencyDebit></agencyDebit>
+		<manualDebit></manualDebit>
+		<manualCredit></manualCredit>
+		<transferType>Static</transferType>
+	</field>
+	<field name="amount"></field>
+	<field name="hours"></field>
+	
+ </reqFields>
+
+
+<dataType>
+	<field name="co" dataType="varchar(9)" required="Y" transfers="Y"/>
+	<field name="entryDate" dataType="datetime" required="Y" transfers="Y"/>
+	<field name="endDate" dataType="datetime" required="N" transfers="N"/>
+	<field name="beginDate" dataType="datetime" required="N" transfers="N"/>
+	<field name="process" dataType="varchar(20)" required="Y" transfers="Y"/>
+	<field name="gl1" dataType="varchar(200)" required="Y" transfers="Y"/>
+	<field name="gl2" dataType="varchar(200)" required="Y" transfers="Y"/>
+	<field name="gl3" dataType="varchar(200)" required="Y" transfers="Y"/>
+	<field name="gl4" dataType="varchar(200)" required="Y" transfers="Y"/>
+	<field name="gl5" dataType="varchar(200)" required="Y" transfers="Y"/>
+	<field name="gl6" dataType="varchar(200)" required="Y" transfers="Y"/>
+	<field name="cd" dataType="varchar(50)" required="Y" transfers="Y"/>
+	<field name="det" dataType="varchar(50)" required="Y" transfers="Y"/>
+	<field name="detcode" dataType="varchar(50)" required="Y" transfers="Y"/>
+	<field name="amount" dataType="decimal(28,2)" required="Y" transfers="Y"/>
+	<field name="hours" dataType="decimal(18,2)" required="Y" transfers="N"/>
+	<field name="description" dataType="varchar(200)" required="Y" transfers="N"/>
+	<field name="empName" dataType="varchar(200)" required="N" transfers="N"/>
+	<field name="empID" dataType="varchar(50)" required="N" transfers="N"/>
+</dataType>
+
+<declareTable>
+Insert @ejentries ({GetXMLData.sqlFieldsList()})
+Select {GetXMLData.sqlFieldsList()}
+From report.elabordist
+Where gl1 not in ('XXX')
+</declareTable>
+</root>
